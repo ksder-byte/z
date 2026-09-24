@@ -200,11 +200,6 @@ STRINGS = {
         'VPN بدون ثبت‌نام. پرداخت کنید — کلید همان لحظه در ایمیل یا تلگرام شماست.',
         '无需注册的 VPN。付款后，密钥立即发送到您的邮箱或 Telegram。',
     ),
-    'marqueeDevicesUnlimited': ('любое число устройств', 'any number of devices', 'هر تعداد دستگاه', '设备不限'),
-    'marqueePrice': ('от {{price}} в месяц', 'from {{price}} a month', 'از {{price}} در ماه', '每月低至 {{price}}'),
-    'marqueeTraffic': ('{{gb}} ГБ трафика', '{{gb}} GB of traffic', '{{gb}} گیگابایت ترافیک', '{{gb}} GB 流量'),
-    'marqueeTrafficUnlimited': ('безлимитный трафик', 'unlimited traffic', 'ترافیک نامحدود', '无限流量'),
-    'noSignup': ('без регистрации', 'no sign-up', 'بدون ثبت‌نام', '无需注册'),
     'paymentsLabel': (
         {'one': 'способ оплаты', 'few': 'способа оплаты', 'many': 'способов оплаты', 'other': 'способа оплаты'},
         {'one': 'payment method', 'other': 'payment methods'},
@@ -239,17 +234,6 @@ STRINGS = {
     'stepsTitle': ('Три шага до VPN', 'Three steps to VPN', 'سه قدم تا VPN', '三步开启 VPN'),
     'trafficLabel': ('трафика', 'of traffic', 'ترافیک', '流量'),
     'unlimited': ('Безлимит', 'Unlimited', 'نامحدود', '无限'),
-    'upToDevices': (
-        {
-            'one': 'до {{count}} устройства',
-            'few': 'до {{count}} устройств',
-            'many': 'до {{count}} устройств',
-            'other': 'до {{count}} устройств',
-        },
-        {'one': 'up to {{count}} device', 'other': 'up to {{count}} devices'},
-        {'one': 'تا {{count}} دستگاه', 'other': 'تا {{count}} دستگاه'},
-        {'other': '最多 {{count}} 台设备'},
-    ),
     'upToDevicesTitle': (
         {
             'one': 'До {{count}} устройства',

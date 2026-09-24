@@ -380,26 +380,6 @@ export function MonoLandingTop({ config }: { config: LandingConfig }) {
 
   const words = config.title.split(/\s+/).filter(Boolean);
 
-  const marquee = [
-    facts.unlimitedTraffic
-      ? t('landing.mono.marqueeTrafficUnlimited', 'безлимитный трафик')
-      : t('landing.mono.marqueeTraffic', {
-          gb: facts.maxTrafficGb,
-          defaultValue: '{{gb}} ГБ трафика',
-        }),
-    facts.unlimitedDevices
-      ? t('landing.mono.marqueeDevicesUnlimited', 'любое число устройств')
-      : t('landing.mono.upToDevices', {
-          count: devicesCount,
-          defaultValue: 'до {{count}} устройств',
-        }),
-    ...facts.payments,
-    t('landing.mono.noSignup', 'без регистрации'),
-    ...(priceFrom
-      ? [t('landing.mono.marqueePrice', { price: priceFrom, defaultValue: 'от {{price}} в месяц' })]
-      : []),
-  ];
-
   // Преимущества: из админки, а пока там пусто — набор по умолчанию из данных.
   const advantages: { icon: ReactNode; title: string; text: string }[] =
     config.features.length > 0
@@ -597,27 +577,6 @@ export function MonoLandingTop({ config }: { config: LandingConfig }) {
               </span>
             )}
           </motion.div>
-        </div>
-
-        {/* Бегущая строка фактов */}
-        <div className="ml-marquee-wrap relative mt-14 overflow-hidden border-y border-[color:var(--ml-hair)] py-3.5 sm:mt-20">
-          <div className="ml-marquee">
-            {[0, 1].map((copy) => (
-              <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
-                {marquee.map((item, index) => (
-                  <span
-                    key={`${copy}-${index}`}
-                    className="flex items-center whitespace-nowrap text-sm font-bold uppercase tracking-[0.12em] text-dark-200"
-                  >
-                    <span className="px-5">{item}</span>
-                    <span className="text-dark-500" aria-hidden="true">
-                      ✦
-                    </span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

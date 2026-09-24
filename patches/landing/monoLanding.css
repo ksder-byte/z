@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------------
    Лендинг DurdenVPN — то, что не выразить утилитами Tailwind: ключевые кадры,
-   halftone-шар героя, бегущая строка и заголовки крупнее общих правил темы.
+   halftone-шар героя и заголовки крупнее общих правил темы.
 
    Всё под классом .mono-landing, а не .mono: страница должна выглядеть
    собранной и без монохромной темы, а в теме — не спорить с её правилами.
@@ -72,23 +72,6 @@
   }
 }
 
-/* Бегущая строка: контент продублирован, сдвиг на -50% замыкает петлю. */
-.mono-landing .ml-marquee {
-  display: flex;
-  width: max-content;
-  animation: ml-marquee 42s linear infinite;
-}
-
-.mono-landing .ml-marquee-wrap:hover .ml-marquee {
-  animation-play-state: paused;
-}
-
-@keyframes ml-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Плитка преимущества при наведении инвертируется — тот же приём, что у
    выбранного тарифа: светлый объект на тёмном поле читается мгновенно. */
 .mono-landing .ml-tile {
@@ -125,8 +108,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mono-landing .ml-sphere,
-  .mono-landing .ml-float,
-  .mono-landing .ml-marquee {
+  .mono-landing .ml-float {
     animation: none !important;
   }
 

@@ -496,7 +496,10 @@ export function MonoLandingTop({ config }: { config: LandingConfig }) {
     <div className="mono-landing">
       {/* ─── Герой ─── */}
       <section className="relative mb-16 pt-6 sm:mb-24 sm:pt-10">
-        <div className="pointer-events-none absolute -right-24 top-4 w-[88vw] max-w-[560px] text-dark-50 opacity-[0.18] sm:-right-16 md:top-10 md:opacity-[0.85] rtl:-left-24 rtl:right-auto rtl:sm:-left-16">
+        {/* Шар — фон, а не объект: тусклый, под всем содержимым (z-0 против
+            z-10 у текста) и без наложения на заголовок. Яркий, он читался
+            как самостоятельный предмет и спорил с надписью за внимание. */}
+        <div className="pointer-events-none absolute -right-24 top-4 z-0 w-[88vw] max-w-[560px] text-dark-50 opacity-[0.14] sm:-right-16 md:-right-36 md:top-10 md:opacity-[0.3] rtl:-left-24 rtl:right-auto rtl:sm:-left-16 rtl:md:-left-36">
           <HalftoneSphere className="ml-sphere w-full" />
         </div>
 
@@ -523,10 +526,7 @@ export function MonoLandingTop({ config }: { config: LandingConfig }) {
             </span>
           </motion.div>
 
-          {/* mix-blend-difference: там, где буквы ложатся на точки шара, они
-              инвертируются в чёрное — полутон «прорезает» заголовок, а не
-              спорит с ним за читаемость. */}
-          <h1 className="ml-hero-title max-w-[12ch] text-dark-50 mix-blend-difference">
+          <h1 className="ml-hero-title max-w-[12ch] text-dark-50">
             {words.map((word, index) => (
               <span key={`${word}-${index}`} className="ml-word">
                 <motion.span
@@ -872,10 +872,10 @@ export function MonoLandingBottom({ config }: { config: LandingConfig }) {
       {/* ─── Финальный призыв: единственный светлый блок страницы ─── */}
       <Reveal className="mb-12">
         <section className="relative overflow-hidden bg-dark-50 px-6 py-12 text-dark-950 sm:px-12 sm:py-16">
-          <div className="pointer-events-none absolute -bottom-24 -right-16 w-[420px] max-w-[70%] text-dark-950 opacity-[0.12]">
+          <div className="pointer-events-none absolute -bottom-24 -right-16 z-0 w-[420px] max-w-[70%] text-dark-950 opacity-[0.08]">
             <HalftoneSphere className="ml-sphere w-full" />
           </div>
-          <div className="relative">
+          <div className="relative z-10">
             <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-dark-950/50">
               {t('landing.mono.finalKicker', 'Готовы?')}
             </div>

@@ -13,6 +13,7 @@ fi
 mkdir -p src/components/landing
 cp "$HERE/MonoLanding.tsx" "$HERE/monoLanding.css" src/components/landing/
 python3 "$HERE/landing_hook.py"
+python3 "$HERE/landing_align.py"
 python3 "$HERE/landing_i18n.py"
 
 echo

@@ -1,0 +1,137 @@
+/* ---------------------------------------------------------------------------
+   Лендинг DurdenVPN — то, что не выразить утилитами Tailwind: ключевые кадры,
+   halftone-шар героя, бегущая строка и заголовки крупнее общих правил темы.
+
+   Всё под классом .mono-landing, а не .mono: страница должна выглядеть
+   собранной и без монохромной темы, а в теме — не спорить с её правилами.
+--------------------------------------------------------------------------- */
+
+.mono-landing {
+  --ml-hair: rgba(255, 255, 255, 0.1);
+}
+
+/* Заголовок героя крупнее общего h1 темы. Селектор (0,2,0) перебивает
+   `.mono h1` (0,1,1) — оба с !important, решает специфичность. */
+.mono-landing .ml-hero-title {
+  font-size: clamp(56px, 14vw, 148px) !important;
+  font-weight: 900 !important;
+  line-height: 0.82 !important;
+  letter-spacing: -0.06em !important;
+  text-transform: uppercase;
+}
+
+/* Заголовки секций: тема ставит h2 вес 800 и трекинг -0.025em, для
+   лендинга нужен плотнее и тяжелее — как в макете. */
+.mono-landing .ml-h2 {
+  font-size: clamp(36px, 7vw, 72px) !important;
+  font-weight: 900 !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.05em !important;
+}
+
+/* Слова заголовка въезжают снизу из-под маски. */
+.mono-landing .ml-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.06em;
+}
+
+/* Halftone-шар: сам растр статичен (SVG из кружков разного радиуса), а
+   движение — только transform. Так анимация стоит почти ноль: браузер
+   гоняет готовый слой, ничего не перерисовывая. */
+.mono-landing .ml-sphere {
+  animation: ml-sphere 16s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+@keyframes ml-sphere {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-3%, 2%, 0) rotate(-8deg) scale(1.05);
+  }
+}
+
+/* Наклейка-логотип покачивается: единственный цветной объект страницы
+   должен немного жить, иначе он выглядит вставленной картинкой. */
+.mono-landing .ml-float {
+  animation: ml-float 7s ease-in-out infinite;
+}
+
+@keyframes ml-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-2deg);
+  }
+}
+
+/* Бегущая строка: контент продублирован, сдвиг на -50% замыкает петлю. */
+.mono-landing .ml-marquee {
+  display: flex;
+  width: max-content;
+  animation: ml-marquee 42s linear infinite;
+}
+
+.mono-landing .ml-marquee-wrap:hover .ml-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes ml-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Плитка преимущества при наведении инвертируется — тот же приём, что у
+   выбранного тарифа: светлый объект на тёмном поле читается мгновенно. */
+.mono-landing .ml-tile {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mono-landing .ml-tile:hover {
+  background-color: rgb(var(--color-dark-50));
+  border-color: rgb(var(--color-dark-50));
+  color: rgb(var(--color-dark-950));
+  transform: translateY(-3px);
+}
+
+.mono-landing .ml-tile:hover .ml-tile-muted {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.mono-landing .ml-tile:hover .ml-tile-icon {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Кнопка-стрелка: стрелка уезжает вниз, намекая, куда ведёт кнопка. */
+.mono-landing .ml-cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.mono-landing .ml-cta:hover .ml-cta-arrow {
+  transform: translateY(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mono-landing .ml-sphere,
+  .mono-landing .ml-float,
+  .mono-landing .ml-marquee {
+    animation: none !important;
+  }
+
+  .mono-landing .ml-tile,
+  .mono-landing .ml-tile:hover {
+    transform: none;
+  }
+}
